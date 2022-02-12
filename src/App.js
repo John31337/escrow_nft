@@ -1,18 +1,21 @@
 import './App.css';
 import * as anchor from "@project-serum/anchor";
-import { useState } from 'react';
+import {FC, useState, useMemo } from 'react';
 import { Connection, PublicKey } from '@solana/web3.js';
 import { Program, BN, Provider, web3 } from '@project-serum/anchor';
 import { TOKEN_PROGRAM_ID, Token } from "@solana/spl-token";
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core';
 import idl from './idl.json';
-import { PhantomWalletAdapter } from '@solana/wallet-adapter-wallets';
+import {
+  PhantomWalletAdapter,
+} from '@solana/wallet-adapter-wallets';
+import { getPhantomWallet } from '@solana/wallet-adapter-wallets';
 import { useWallet, WalletProvider, ConnectionProvider } from '@solana/wallet-adapter-react';
 import { WalletModalProvider, WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-require('@solana/wallet-adapter-react-ui/styles.css');
+require('@solana/wallet-adapter-react-ui/styles.css')
 
-const wallets = [ new PhantomWalletAdapter() ]
+const wallets = [ new getPhantomWallet() ]
 
 const { SystemProgram, Keypair } = web3;
 
@@ -53,7 +56,7 @@ function App() {
   async function CreateNFT() {
     const provider = await getProvider();
 
-    console.log(wallets);
+    // console.log(wallets);
     await provider.connection.confirmTransaction(
       await provider.connection.requestAirdrop(payer.publicKey, 100000000),
       "confirmed"
@@ -187,7 +190,9 @@ function App() {
   if (!wallet.connected) {
     return (
       <div style={{ display: 'flex', justifyContent: 'center', marginTop:'100px' }}>
-        <WalletMultiButton />
+        <WalletModalProvider>
+            <WalletMultiButton />
+        </WalletModalProvider>
       </div>
     )
   } else {
