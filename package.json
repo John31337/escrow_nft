@@ -2,12 +2,19 @@
   "name": "escrow_nft",
   "version": "0.1.0",
   "private": true,
+  "javascript.validate.enable": false,
+  "resolutions": {
+    "//": "See https://github.com/facebook/create-react-app/issues/11773",
+    "react-error-overlay": "6.0.9"
+  },
   "postinstall": "sh -c \"yarn --silent are-you-es5 check -r . | tail -n 1 > ./non_ES5_node_modules \"",
   "dependencies": {
     "@material-ui/core": "^4.12.3",
+    "@primenums/solana-nft-tools": "^0.1.2",
     "@project-serum/anchor": "^0.21.0",
     "@randlabs/myalgo-connect": "^1.1.2",
     "@solana/spl-token": "^0.1.8",
+    "@solana/spl-token-registry": "^0.2.2200",
     "@solana/wallet-adapter-base": "^0.7.1",
     "@solana/wallet-adapter-phantom": "^0.6.0",
     "@solana/wallet-adapter-react": "^0.13.1",
@@ -23,7 +30,10 @@
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "text-encoder": "^0.0.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@nfteyez/sol-rayz": "^0.8.1",
+    "@metaplex/js": "4.10.0",
+    "@metaplex-foundation/mpl-token-metadata": "1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -52,6 +62,7 @@
   "devDependencies": {
     "are-you-es5": "^2.1.2",
     "path-browserify": "^1.0.1",
-    "stream-browserify": "^3.0.0"
+    "stream-browserify": "^3.0.0",
+    "process": "0.11.10"
   }
 }

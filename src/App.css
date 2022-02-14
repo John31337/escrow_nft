@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  display: grid;
+  margin: 0px 100px 100px 100px;
 }
 
 .App-logo {
@@ -35,4 +37,15 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.price-container{
+  display: flex;
+  align-items: center;
+  align-content: stretch;
+  flex-direction: row;
+}
+
+.button-container{
+  margin: 5px;
 }

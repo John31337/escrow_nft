@@ -7,12 +7,17 @@
       "accounts": [
         {
           "name": "initializer",
-          "isMut": false,
+          "isMut": true,
           "isSigner": true
         },
         {
           "name": "initializerTokenAccount",
           "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mintKey",
+          "isMut": false,
           "isSigner": false
         },
         {
